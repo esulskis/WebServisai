@@ -24,12 +24,8 @@ client.authenticationOperation(args, function(err, result) {
     if(result["userValid"]){
       request.session.user = args["email"];
       response.redirect('/');
-    }else {
-
-console.log(result["userValid"])
-
     }
-
+      else response.redirect('/login');
       });
 });
 
