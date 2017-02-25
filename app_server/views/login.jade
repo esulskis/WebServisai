@@ -3,11 +3,11 @@ block content
 
   .container
     .col-md-2.col-md-offset-5.col-sm-2.col-sm-offset-5
-      form
+      form(method="POST")
         .form-group
-          input.form-control(type='email', placeholder='El. paštas')
+          input.form-control(type='email',name="email", placeholder='El. paštas')
         .form-group
-          input.form-control(type='password', placeholder='Slaptažodis')
-        button.btn.btn-primary(type='submit') Prisijungti
+          input.form-control(type='password',name="password", placeholder='Slaptažodis')
+        button.btn.btn-primary(type='submit' , name="login") Prisijungti
       hr
       button.btn.btn-default(type='button') Registruotis
