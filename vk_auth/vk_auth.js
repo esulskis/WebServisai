@@ -2,23 +2,50 @@
 var http = require("http");
 var soap = require("soap");
 var xml = require('fs').readFileSync('vk_auth/vk_auth.wsdl', 'utf8');
-var userList = [
-  {"email":"ts1@email.com", "password":"123"},
-{"e-mail":"ts2@email.com","password":"123"}];
+var mongoose = require('mongoose');
+var jwt = require('jsonwebtoken');
+mongoose.connect('mongodb://localhost/eschool');
+user =  require('../models/user');
+var db = mongoose.connection;
+
+
 var service = {
    authenticationService: {
         authenticationPort : {
-            authenticationOperation: function (args) {
-              var match = false;
-              for(user in userList){
-                if (userList[user]["email"] == args["email"] && userList[user]["password"] == args["password"]){
-                  match = true;
+            checkWebTokenOperation: function(token,callback){
+
+                jwt.verify(token["token"],"rndSecret",function(err,decode){
+
+                  if(err){
+                    callback({tokenValid:false});
+                  }
+                    callback({userValid:true});
+                })
+
+            },
+            authenticationOperation: function (args,callback) {
+
+
+              user.getUserMatch(args["email"],args["password"],function(match){
+
+
+                if(!match)
+                    callback({userValid:false,token:null});
+                else{
+
+                  var token = jwt.sign(match,"rndSecret",{
+
+
+                  });
+                      console.log(token);
+                  callback({userValid:true,token:token});
                 }
 
-              }
-                return {
-                    userValid: match
-                }
+
+               });
+
+
+
             }
         }
     }

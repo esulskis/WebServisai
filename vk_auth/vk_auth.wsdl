@@ -14,8 +14,16 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
   <wsdl:message name="authenticationResponse">
   	<wsdl:part name="userValid" type="xs:boolean"/>
+    <wsdl:part name= "token" type="xs;string"/>
 	</wsdl:message>
 
+  <wsdl:message name="checkWebTokenRequest">
+    <wsdl:part name="token" type="xs:string"/>
+  </wsdl:message>
+
+  <wsdl:message name="checkWebTokenResponse">
+    <wsdl:part name="tokenValid" type="xs:boolean"/>
+  </wsdl:message>
 
 
 	<wsdl:portType name="authenticationPortType">
@@ -23,6 +31,11 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 			<wsdl:input message="authenticationRequest"/>
 			<wsdl:output message="authenticationResponse"/>
 		</wsdl:operation>
+
+    <wsdl:operation name="checkWebTokenOperation">
+    <wsdl:input message="checkWebTokenRequest"/>
+    <wsdl:output message="checkWebTokenResponse"/>
+  </wsdl:operation>
 	</wsdl:portType>
 
 
@@ -38,6 +51,16 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
 							<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
 					</wsdl:output>
 			</wsdl:operation>
+
+      <wsdl:operation name="checkWebTokenOperation">
+          <soap:operation soapAction="checkWebTokenOperation"/>
+          <wsdl:input>
+              <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+          </wsdl:input>
+          <wsdl:output>
+              <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+          </wsdl:output>
+      </wsdl:operation>
 
 	</wsdl:binding>
 	<wsdl:service name="authenticationService">
