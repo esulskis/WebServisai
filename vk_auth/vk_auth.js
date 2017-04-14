@@ -11,7 +11,7 @@ var db = mongoose.connection;
 
 var service = {
    authenticationService: {
-        authenticationPort : {
+     authenticationPort : {
             checkWebTokenOperation: function(token,callback){
 
                 jwt.verify(token["token"],"rndSecret",function(err,decode){
@@ -33,12 +33,14 @@ var service = {
                     callback({userValid:false,token:null});
                 else{
 
-                  var token = jwt.sign(match,"rndSecret",{
+                   var data = {id:match.id,
+                   email:match.email}
+                  //var token = jwt.sign(match.email,"rndSecret",{
 
 
-                  });
-                      console.log(token);
-                  callback({userValid:true,token:token});
+                  //});
+
+                  callback({userValid:true,token:data});
                 }
 
 
