@@ -1,0 +1,9 @@
+extends layout
+block content
+  .container
+    h1 Vardo pakeitimas
+    form(method="POST")
+      input(name='newName', placeholder='Naujas vardas', type='text')
+      input.submitButton(name='changeName', value='pakeisti vardą', type='submit')
+    -if(message)
+      div#note #{message}

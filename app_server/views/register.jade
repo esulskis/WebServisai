@@ -1,0 +1,17 @@
+extends layout
+block content
+  .container
+    h1 Registracija
+    form(method="POST")
+      input(name='name', placeholder='Vardas', type='text')
+      input(name='email', placeholder='El. paštas', type='email')
+      input(name='password', placeholder='Slaptažodis', type='password')
+      br
+      input(name='role', value='true', checked='', type='radio')
+      | Dėstytojas
+      input(name='role', value='false', type='radio')
+      | Studentas
+      br
+      input.submitButton(name='register', value='registruotis', type='submit')
+    -if(message)
+      div#note #{message}
