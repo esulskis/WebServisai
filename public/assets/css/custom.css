@@ -1,7 +1,59 @@
-.container{
-padding-top:100px;
+.container {
+  text-align:center;
+  padding: 40px;
+  width: 400px;
+  background-color: #F7F7F7;
+  border-radius: 2px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+ margin: 0 auto 10px;
+}
+.form{
+	margin: 0 auto;
+}
+.container h1 {
+  font-weight: 100;
+  text-align: center;
+  font-size: 2.3em;
+
 }
 
+.container input[type=submit] {
+  width: 200px;
+  
+  margin-bottom: 10px;
+ 
+  
+}
+.container input[type=radio]{
+	margin-left:10px;
+	
+}
+.container input[type=text], input[type=password],input[type=email] {
+  height: 44px;
+  
+  width: 200px;
+  margin-bottom: 10px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+  
+  padding: 0 8px;
+
+ 
+}
+
+
+.submitButton {
+  text-align:center;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  height: 36px;
+  border: 0px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0,0,0,0.1); 
+  background-color: #4d90fe;
+}
 .btn{
 width:160px;
 
@@ -69,3 +121,5 @@ text-align:center;
 .navbar .navbar-collapse {
   text-align: center;
 }
+
+
